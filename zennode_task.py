@@ -58,12 +58,6 @@ def calc_total(quantity, wrapped_gifts):
         total_qty += prod_qty
         total_amt += prod_qty * price_per_unit
 
-#applying discount for tiered_50_discount rule
-        if prod_qty > 15:
-            disc_qty = prod_qty - 15
-            discounted_price_per_unit = price_per_unit * (1 - discount_rules["tiered_50_discount"])
-            total_amt -= disc_qty * discounted_price_per_unit
-
 #adding gift wrap fee
         if wrapped_gifts.get(product):
             total_amt += wrapped_gifts[product] * gift_wrap_fee
@@ -93,7 +87,7 @@ def main():
 
     total_amount, discount_name, discount_amount, shipping_fee, total = calc_total(quantity, wrapped_gifts)
 
-    # Printing the details
+#printing the details
     print("Product Details:")
     for product, product_quantity in quantity.items():
         print(f"{product} - Quantity: {product_quantity} - Total: {product_quantity * products[product]}")
